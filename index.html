@@ -1,11 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>lhttp-web-demo</title>
-  </head>
-  <body>
-    <app></app>
-    <!-- built files will be auto injected -->
-  </body>
-</html>
+<head>
+    <script src="./lhttp-client.js"></script>
+    <script src="./vue.min.js"></script>
+</head>
+
+<body id="chat">
+    <ul>
+        <li v-for="m in messages">
+            {{m}}
+        </li>
+    </ul>
+    <input v-model="message"> <button v-on:click="send">Send</button>
+</body>
+
+<script type="text/javascript">
+lhttp_client = new Lhttp("ws://121.199.9.187:8081/chat");
+lhttp_client.context.subscribe("chatroom", "chat", null, null);
+
+v = new Vue({
+    el:"#chat",
+    data:{
+        messages:[]
+    },
+    methods:{
+        send:function(){
+            this.message = this.messages.push(this.message);
+            lhttp_client.context.publish("chatroom", "chat", null, this.message);
+        }
+    }
+})
+
+lhttp_client.on_message = function(context) {
+    v.data.messages.push(context.getBody());
+}
+</script>
