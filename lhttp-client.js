@@ -17,8 +17,9 @@ function Lhttp(url) {
         _this.on_open(c);
     }
     _this.conn.onmessage = function(evt) {
+        console.log("receive message: " + evt.data);
         var c = new Context(_this.conn, evt.data);
-        _this.on_onmessage(c);
+        _this.on_message(c);
     }
     _this.conn.onerror = function(evt) {
         var c = new Context(_this.conn, evt.data);
@@ -90,6 +91,7 @@ function Context(conn, message) {
     }
 
     _this.publish = function(channel, command, headers, body) {
+        //console.log("publish body: " + body);
         _this.addHeader(HEADER_KEY_PUBLISH, channel);
         assembleMessage(channel, command, headers, body);
     }

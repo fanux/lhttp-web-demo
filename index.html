@@ -11,25 +11,30 @@
     </ul>
     <input v-model="message"> <button v-on:click="send">Send</button>
 </body>
-
 <script type="text/javascript">
-lhttp_client = new Lhttp("ws://121.199.9.187:8081/chat");
-lhttp_client.context.subscribe("chatroom", "chat", null, null);
-
-v = new Vue({
+var lhttp_client = new Lhttp("ws://47.89.40.72:8081/");
+new Vue({
     el:"#chat",
     data:{
         messages:[]
     },
     methods:{
         send:function(){
-            this.message = this.messages.push(this.message);
             lhttp_client.context.publish("chatroom", "chat", null, this.message);
+            this.message = "";
+        }
+    },
+    created:function() {
+        var _this = this;
+        lhttp_client.on_message = function(context) {
+            console.log("on message: " + context.getBody());
+            if (context.getBody() != "") {
+                _this.messages.push(context.getBody());
+            }
         }
     }
 })
-
-lhttp_client.on_message = function(context) {
-    v.data.messages.push(context.getBody());
+lhttp_client.on_open = function(context) {
+    context.subscribe("chatroom", "chat", null, "");
 }
 </script>
