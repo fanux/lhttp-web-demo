@@ -1,4 +1,5 @@
-# lhttp-web-demo
+# lhttp-web-demo 
+We recommend some webframework like [vue.js](http://vuejs.org.cn/) or [angular](https://angularjs.org/)
 ###just clone the code, and open index.html in your browser!
 ###index.html:
 ```javascript
