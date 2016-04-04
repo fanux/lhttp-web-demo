@@ -1,6 +1,8 @@
 # lhttp-web-demo 
 We recommend some webframework like [vue.js](http://vuejs.org.cn/) or [angular](https://angularjs.org/)
 ###just clone the code, and open index.html in your browser!
+![chat-demo](https://github.com/fanux/lhttp-web-demo/blob/master/web-demo.gif)
+
 ###index.html:
 ```javascript
 <head>
