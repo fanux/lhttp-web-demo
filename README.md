@@ -3,6 +3,10 @@ We recommend some webframework like [vue.js](http://vuejs.org.cn/) or [angular](
 ###just clone the code, and open index.html in your browser!
 ![chat-demo](https://github.com/fanux/lhttp-web-demo/blob/master/web-demo.gif)
 
+<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+      <source id="mp4" src="https://github.com/fanux/lhttp-web-demo/blob/master/web-demo.mp4" type="video/mp4">
+</video>
+
 ###index.html:
 ```javascript
 <head>
