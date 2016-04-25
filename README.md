@@ -19,7 +19,7 @@ We recommend some webframework like [vue.js](http://vuejs.org.cn/) or [angular](
     <input v-model="message"> <button v-on:click="send">Send</button>
 </body>
 <script type="text/javascript">
-var lhttp_client = new Lhttp("ws://47.89.40.72:8081/");
+var lhttp_client = new Lhttp("ws://yourIp:yourLhttpPort/");
 new Vue({
     el:"#chat",
     data:{
