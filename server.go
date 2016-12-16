@@ -8,6 +8,7 @@ import (
 
 func main() {
 	dir, _ := os.Getwd()
+	dir = dir + "/lhttp-web-demo"
 	h := http.FileServer(http.Dir(dir))
 	err := http.ListenAndServe(":9090", h)
 	if err != nil {
