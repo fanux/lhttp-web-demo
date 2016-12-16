@@ -12,7 +12,7 @@
     <input v-model="message"> <button v-on:click="send">Send</button>
 </body>
 <script type="text/javascript">
-var lhttp_client = new Lhttp("ws://yourIP:yourLhttpPort/");
+var lhttp_client = new Lhttp("ws://localhost:8081/");
 new Vue({
     el:"#chat",
     data:{
